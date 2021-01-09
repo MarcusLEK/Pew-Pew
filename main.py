@@ -14,8 +14,8 @@ YELLOW = (255, 255, 0)
 
 BORDER = pygame.Rect(WIDTH//2 - 5, 0, 10, HEIGHT)
 
-BULLET_HIT_SOUND = pygame.mixer.Sound('Assets/Grenade+1.mp3')
-BULLET_FIRE_SOUND = pygame.mixer.Sound('Assets/Gun+Silencer.mp3')
+# BULLET_HIT_SOUND = pygame.mixer.Sound('Assets/Grenade+1.mp3')
+# BULLET_FIRE_SOUND = pygame.mixer.Sound('Assets/Gun+Silencer.mp3')
 
 HEALTH_FONT = pygame.font.SysFont('comicsans', 40)
 WINNER_FONT = pygame.font.SysFont('comicsans', 100)
@@ -53,6 +53,13 @@ def draw_window(red, yellow, red_bullets, yellow_bullets, red_health, yellow_hea
         "Health: " + str(yellow_health), 1, WHITE)
     WIN.blit(red_health_text, (WIDTH - red_health_text.get_width() - 10, 10))
     WIN.blit(yellow_health_text, (10, 10))
+
+    red_bullet_amount = HEALTH_FONT.render(
+        "Bullets: " + str(MAX_BULLETS - len(red_bullets)), 1, WHITE)
+    yellow_bullet_amount = HEALTH_FONT.render(
+        "Bullets: " + str(MAX_BULLETS - len(yellow_bullets)), 1, WHITE)
+    WIN.blit(red_bullet_amount, (WIDTH - yellow_bullet_amount.get_width() - 10, 50))
+    WIN.blit(yellow_bullet_amount, (10, 50))
 
     WIN.blit(YELLOW_SPACESHIP, (yellow.x, yellow.y))
     WIN.blit(RED_SPACESHIP, (red.x, red.y))
